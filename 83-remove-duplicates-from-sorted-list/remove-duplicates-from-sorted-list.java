@@ -15,7 +15,7 @@ class Solution {
             }
         }
 
-        i.next = null; 
+        i.next = j; 
         return head;
     }
 }
