@@ -8,14 +8,12 @@ class Solution {
             map.put(num, map.getOrDefault(num, 0) + 1);
         }
         
-        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-            if (entry.getValue() == 2) {
+        for(Map.Entry<Integer, Integer> entry : map.entrySet()){
+            if(entry.getValue() == 2){
                 arr[index] = entry.getKey();
                 index++;
             }
         }
-
-
         return arr;
     }
 }
