@@ -1,25 +1,26 @@
 class Solution {
     public int rob(int[] nums) {
-        int[] memo = new int[nums.length+1];
-        Arrays.fill(memo,-1);
+        int[] dp = new int[nums.length+1];
+        Arrays.fill(dp,-1);
 
-        return solve(nums,0 , memo);
+        return solve(0,nums, dp);
     }
 
-    private int solve(int[] nums, int i, int[] memo){
+    int solve(int i, int[] nums, int[] dp){
+
         if(i >= nums.length){
             return 0;
         }
 
-        if(memo[i] != -1){
-            return memo[i];
+        if(dp[i] != -1){
+            return dp[i];
         }
 
-        int rob = nums[i] + solve(nums, i+2, memo);
-        int skip = solve(nums, i+1, memo);
+        int robCurrent = nums[i] + solve(i+2,nums, dp);
+        int skipCurrent = solve(i+1, nums,dp);
 
-        memo[i] = Math.max(rob,skip);
+        dp[i] = Math.max(robCurrent, skipCurrent);
 
-        return memo[i];
+        return dp[i]; 
     }
 }
